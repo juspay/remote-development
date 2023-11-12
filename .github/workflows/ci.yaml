@@ -13,7 +13,7 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@main
       # disko VM test requires a system with support for: {kvm, nixos-test}
       - run: |
-        mkdir -p ~/.config/nix
-        echo system-features = kvm nixos-test >> ~/.config/nix/nix.conf
+          mkdir -p ~/.config/nix
+          echo system-features = kvm nixos-test >> ~/.config/nix/nix.conf
       # Run disko VM test (test partition creation and whether the VM boots up later)
       - run: nix build .#nixosConfigurations.office.config.system.build.installTest
