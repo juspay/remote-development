@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: DeterminateSystems/nix-installer-action@main
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+        # disko VM test requires a system with support for: {kvm, nixos-test}
+        # See https://github.com/nix-community/nixos-generators/issues/83#issuecomment-973294478
+        with:
+          extra-conf: "system-features = nixos-test benchmark big-parallel kvm"
       - uses: DeterminateSystems/magic-nix-cache-action@main
-      # disko VM test requires a system with support for: {kvm, nixos-test}
-      # See https://github.com/nix-community/nixos-generators/issues/83#issuecomment-973294478
-      - run: |
-          sudo mkdir -p /etc/nix
-          echo "system-features = kvm nixos-test" | sudo tee -a /etc/nix/nix.conf && sudo pkill nix-daemon
       # Run disko VM test (test partition creation and whether the VM boots up later)
       - run: nix build .#nixosConfigurations.office.config.system.build.installTest
