@@ -4,7 +4,7 @@ NixOS configuration for shared remote development via SSH
 ## Getting started
 
 
-| Step | Target | Host |
+| Step | Host | Guest |
 | ---- | ------ | ---- |
 | 1.   | Add your SSH key to `authorized_keys` file in `/root/.ssh` | |
 | 2.   | Run `lsblk` to find the `<device-name>` of the disk to partition. For example, `nvme0n1` is the device here: <br><pre>❯ lsblk<br>NAME        MAJ:MIN RM  SIZE RO TYPE<br>nvme0n1     259:0    0  1.9T  0 disk</pre> | |
