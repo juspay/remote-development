@@ -12,6 +12,6 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
       # disko VM test requires a system with support for: {kvm, nixos-test}
-      - run: apt-get install -y qemu-kvm
+      - run: sudo apt-get install -y qemu-kvm
       # Run disko VM test (test partition creation and whether the VM boots up later)
       - run: nix build .#nixosConfigurations.office.config.system.build.installTest
