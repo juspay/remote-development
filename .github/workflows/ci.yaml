@@ -12,8 +12,9 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
       # disko VM test requires a system with support for: {kvm, nixos-test}
+      # See https://github.com/nix-community/nixos-generators/issues/83#issuecomment-973294478
       - run: |
-          mkdir -p ~/.config/nix
-          echo system-features = kvm nixos-test >> ~/.config/nix/nix.conf
+          sudo mkdir -p /etc/nix
+          echo "system-features = kvm nixos-test" | sudo tee -a /etc/nix/nix.conf && sudo pkill nix-daemon
       # Run disko VM test (test partition creation and whether the VM boots up later)
       - run: nix build .#nixosConfigurations.office.config.system.build.installTest
