@@ -11,4 +11,7 @@ NixOS configuration for shared remote development via SSH
 | 3.   | Update `disko.devices.disk.main.device = "/dev/<device-name>";` in `disk-config.nix` | |
 | 4.   | | `nix run github:nix-community/nixos-anywhere -- --flake .#office root@<ip-address>` | 
 
-**_Note:_ Target above can be any linux machine or a bootable USB (haven't tested the latter yet).**
+**_Note:_ Target above can be any linux machine or a bootable USB.**
+
+**Disclaimer**: The `<ip-address>` might change in kexec mode or post-installation, in which case you will have to stop the `Step 4` and rerun with updated `<ip-address>`.
+
