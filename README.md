@@ -18,3 +18,7 @@ Terminology:
 
 **Disclaimer**: The `<ip-address>`[^1] might change in kexec mode or post-installation, in which case `SSH connection will timeout`, the solution is to `Ctrl-C` and rerun `Step 4` with updated `<ip-address>`.
 [^1]: Find the `<ip-address>` using `ifconfig` or `ip a`. Under the device name you will find a line that looks like: `inet <ip-address>  ...`
+
+## Discussion
+
+For discussing this project, please [join our Zulip](https://nixos.zulipchat.com/#narrow/stream/413948-nixos).
