@@ -17,13 +17,16 @@
             services.openssh.enable = true;
             users.users = {
               root = {
-                # Post-installation, the IP might change if MAC is not the
-                # only identifier used by DHCP server to lease an IP, by setting a
-                # password you can find the changed IP.
-                initialHashedPassword = "";
                 openssh.authorizedKeys.keys = [
                   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFN5Ov2zDIG59/DaYKjT0sMWIY15er1DZCT9SIak07vK"
+                  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJnwODoZ7J2O+uCkYUpBb45kWxF5FITXJtzyXy02S3Aj"
                 ];
+              };
+              faisal = {
+                openssh.authorizedKeys.keys = [
+                  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJnwODoZ7J2O+uCkYUpBb45kWxF5FITXJtzyXy02S3Aj"
+                ];
+                isNormalUser = true;
               };
             };
             boot.loader.grub = {
