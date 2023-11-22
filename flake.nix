@@ -3,9 +3,28 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+    deploy-rs.url = "github:serokell/deploy-rs";
+    deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { nixpkgs, disko, ... }:
+  outputs = { self, nixpkgs, disko, deploy-rs, ... }:
     {
+      deploy.nodes = {
+        nixos = {
+          hostname = "10.10.50.151"; # Local IP
+          sshUser = "root";
+          profiles.system = {
+            user = "root";
+            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.office;
+          };
+        };
+      };
+      apps."x86_64-linux" = {
+        # Deploy
+        default = {
+          type = "app";
+          program = "${deploy-rs.packages."x86_64-linux".deploy-rs}/bin/deploy";
+        };
+      };
       nixosConfigurations.office = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
