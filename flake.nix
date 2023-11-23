@@ -13,7 +13,7 @@
     {
       deploy.nodes = {
         nixos = {
-          hostname = "10.10.50.151"; # Local IP
+          hostname = "100.92.110.174"; # Tailscale IP
           sshUser = "root";
           profiles.system = {
             user = "root";
@@ -37,6 +37,7 @@
               ./disk-config.nix
             ];
             services.openssh.enable = true;
+            services.tailscale.enable = true;
             users.users = {
               root = {
                 openssh.authorizedKeys.keys = [
