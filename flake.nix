@@ -22,7 +22,7 @@
         # Deploy
         default = {
           type = "app";
-          program = "${deploy-rs.packages."x86_64-linux".deploy-rs}/bin/deploy";
+          program = nixpkgs.lib.getExe deploy-rs;
         };
       };
       nixosConfigurations.office = nixpkgs.lib.nixosSystem {
