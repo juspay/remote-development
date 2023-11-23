@@ -13,7 +13,7 @@
     {
       deploy.nodes = {
         nixos = {
-          hostname = "100.92.110.174"; # Tailscale IP
+          hostname = "100.92.110.74"; # Tailscale IP
           sshUser = "root";
           profiles.system = {
             user = "root";
