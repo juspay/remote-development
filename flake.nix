@@ -3,9 +3,31 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+    deploy-rs.url = "github:serokell/deploy-rs";
+    deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { nixpkgs, disko, ... }:
+  outputs = { self, nixpkgs, disko, deploy-rs, ... }:
+    let
+      users = import ./nix/users.nix;
+    in
     {
+      deploy.nodes = {
+        nixos = {
+          hostname = "100.92.110.74"; # Tailscale IP belongs to separate Tailscale account with gmail login shared between Faisal & Shivaraj
+          sshUser = "root";
+          profiles.system = {
+            user = "root";
+            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.office;
+          };
+        };
+      };
+      apps."x86_64-linux" = {
+        # Deploy
+        default = {
+          type = "app";
+          program = nixpkgs.lib.getExe deploy-rs;
+        };
+      };
       nixosConfigurations.office = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
@@ -15,15 +37,19 @@
               ./disk-config.nix
             ];
             services.openssh.enable = true;
+            services.tailscale.enable = true;
             users.users = {
               root = {
-                # Post-installation, the IP might change if MAC is not the
-                # only identifier used by DHCP server to lease an IP, by setting a
-                # password you can find the changed IP.
-                initialHashedPassword = "";
                 openssh.authorizedKeys.keys = [
-                  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFN5Ov2zDIG59/DaYKjT0sMWIY15er1DZCT9SIak07vK"
+                  users.shivaraj.pubKey
+                  users.faisal.pubKey
                 ];
+              };
+              faisal = {
+                openssh.authorizedKeys.keys = [
+                  users.faisal.pubKey
+                ];
+                isNormalUser = true;
               };
             };
             boot.loader.grub = {
