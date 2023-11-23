@@ -13,7 +13,7 @@
     {
       deploy.nodes = {
         nixos = {
-          hostname = "100.92.110.74"; # Tailscale IP
+          hostname = "100.92.110.74"; # Tailscale IP belongs to separate Tailscale account with gmail login shared between Faisal & Shivaraj
           sshUser = "root";
           profiles.system = {
             user = "root";
