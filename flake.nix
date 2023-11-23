@@ -7,6 +7,9 @@
     deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = { self, nixpkgs, disko, deploy-rs, ... }:
+    let
+      users = import ./nix/users.nix;
+    in
     {
       deploy.nodes = {
         nixos = {
@@ -37,13 +40,13 @@
             users.users = {
               root = {
                 openssh.authorizedKeys.keys = [
-                  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFN5Ov2zDIG59/DaYKjT0sMWIY15er1DZCT9SIak07vK"
-                  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJnwODoZ7J2O+uCkYUpBb45kWxF5FITXJtzyXy02S3Aj"
+                  users.shivaraj.pubKey
+                  users.faisal.pubKey
                 ];
               };
               faisal = {
                 openssh.authorizedKeys.keys = [
-                  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJnwODoZ7J2O+uCkYUpBb45kWxF5FITXJtzyXy02S3Aj"
+                  users.faisal.pubKey
                 ];
                 isNormalUser = true;
               };
