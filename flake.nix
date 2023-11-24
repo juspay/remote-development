@@ -35,8 +35,8 @@
           ({ modulesPath, ... }: {
             imports = [
               ./disk-config.nix
-              ./nix/configuration.nix
             ];
+            networking.hostName = "nixos-remote-01";
             services.openssh.enable = true;
             services.tailscale.enable = true;
             users.users = {
