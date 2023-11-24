@@ -15,7 +15,7 @@ Terminology:
 | 2.   | Run `lsblk` to find the `<device-name>` of the disk to partition. For example, `nvme0n1` is the device here: <br><pre>❯ lsblk<br>NAME        MAJ:MIN RM  SIZE RO TYPE<br>nvme0n1     259:0    0  1.9T  0 disk</pre> | |
 | 3.   | | In `disk-config.nix`, set `disko.devices.disk.main.device = "/dev/<device-name>";` |
 | 4.   | | `nix run github:nix-community/nixos-anywhere -- --flake .#office root@<ip-address>` |
-| 5.   | | Deploy incremental changes with `nix run github:serokell/deploy-rs -- --remote-build .#nixos` |
+| 5.   | | Deploy incremental changes with `nix run github:serokell/deploy-rs -- --remote-build .#nixos-remote-01` |
 
 **Disclaimer**: The `<ip-address>`[^1] might change in kexec mode or post-installation, in which case `SSH connection will timeout`, the solution is to `Ctrl-C` and rerun `Step 4` with updated `<ip-address>`.
 [^1]: Find the `<ip-address>` using `ifconfig` or `ip a`. Under the device name you will find a line that looks like: `inet <ip-address>  ...`

@@ -12,12 +12,12 @@
     in
     {
       deploy.nodes = {
-        nixos = {
+        nixos-remote-01 = {
           hostname = "100.92.110.74"; # Tailscale IP belongs to separate Tailscale account with gmail login shared between Faisal & Shivaraj
           sshUser = "root";
           profiles.system = {
             user = "root";
-            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.office;
+            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.nixos-remote-01;
           };
         };
       };
@@ -28,7 +28,7 @@
           program = nixpkgs.lib.getExe deploy-rs;
         };
       };
-      nixosConfigurations.office = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.nixos-remote-01 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           disko.nixosModules.disko
@@ -36,6 +36,7 @@
             imports = [
               ./disk-config.nix
             ];
+            networking.hostName = "nixos-remote-01";
             services.openssh.enable = true;
             services.tailscale.enable = true;
             users.users = {

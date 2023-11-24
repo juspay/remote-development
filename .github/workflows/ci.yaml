@@ -17,4 +17,4 @@ jobs:
           extra-conf: "system-features = nixos-test benchmark big-parallel kvm"
       - uses: DeterminateSystems/magic-nix-cache-action@main
       # Run disko VM test (test partition creation and whether the VM boots up later)
-      - run: nix build .#nixosConfigurations.office.config.system.build.installTest
+      - run: nix build .#nixosConfigurations.nixos-remote-01.config.system.build.installTest
