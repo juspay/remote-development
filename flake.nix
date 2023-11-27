@@ -34,7 +34,7 @@
           disko.nixosModules.disko
           ({ modulesPath, ... }: {
             imports = [
-              ./disk-config.nix
+              ./nix/disk-config.nix
             ];
             networking.hostName = "nixos-remote-01";
             services.openssh.enable = true;
