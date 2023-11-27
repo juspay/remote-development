@@ -1,7 +1,8 @@
+{ ... }:
 let
   users = import ./users.nix;
 in
-{ modulesPath, ... }: {
+{
   imports = [
     ./disk-config.nix
   ];
