@@ -1,5 +1,6 @@
 # remote-development
-NixOS configuration for shared remote development via SSH
+
+[NixOS](https://nixos.asia/en/nixos) configuration for shared remote [development](https://nixos.asia/en/dev) via SSH
 
 ## Getting started
 
