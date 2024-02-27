@@ -1,7 +1,11 @@
 # Configuration common to all hosts
-{ pkgs, lib, ... }:
+{ flake, pkgs, lib, ... }:
 
 {
+  imports = [
+    flake.inputs.self.nixosModules.home-manager
+  ];
+
   # Some machines may not have ethernet.
   networking.networkmanager.enable = true;
 
@@ -36,5 +40,5 @@
   services.openssh.enable = true;
 
   # For VSCode SSH remote
-  services.vscode-server.enable = true;
+  # services.vscode-server.enable = true;
 }
