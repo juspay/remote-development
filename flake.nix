@@ -13,8 +13,9 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" "aarch64-darwin" ];
       imports = [ inputs.nixos-flake.flakeModule ];
-      perSystem = { pkgs, ... }: {
+      perSystem = { pkgs, self', ... }: {
         formatter = pkgs.nixpkgs-fmt;
+        packages.default = self'.packages.activate; # Enables `nix run`
       };
       flake = {
         nixosConfigurations = {

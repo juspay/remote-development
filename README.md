@@ -16,14 +16,11 @@ Currently, we are managing a single NixOS machine called `vanjaram`. It does not
 ssh {srid|remotedev}@vanjaram
 > cd /etc/nixos
 # ^ This points to this git repository
-> sudo nixos-rebuild switch
+> nix run
+# ^ This runs 'nixos-rebuild switch' (via nixos-flake)
 ```
 
 Make sure to push your changes to Git. Later, we want to figure out remote deployment here.
-
-### New User instructions
-
-1. Enable VSCode server by [enabling the user service](https://github.com/nix-community/nixos-vscode-server?tab=readme-ov-file#enable-the-service)
 
 ## Discussion
 
