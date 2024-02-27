@@ -6,7 +6,7 @@
   };
   outputs = inputs: {
     nixosConfigurations = {
-      # TODO: Make this use disko
+      # TODO: Make this use disko: https://github.com/juspay/remote-development/issues/11
       vanjaram = inputs.nixpkgs.lib.nixosSystem {
         modules = [ ./hosts/vanjaram/configuration.nix ];
       };
