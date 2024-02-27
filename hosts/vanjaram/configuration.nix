@@ -43,7 +43,6 @@
   services.tailscale.enable = true;
   services.openssh.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = 
     let 
       users = import ../../nix/users.nix;
@@ -54,8 +53,6 @@
         openssh.authorizedKeys.keys = cfg.pubKeys;
       });
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     neovim
     git
