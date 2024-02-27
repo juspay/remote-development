@@ -26,7 +26,7 @@ in
   home-manager.users =
     lib.flip lib.mapAttrs users (name: cfg: {
       imports = [
-        ../../home/commmon.nix
+        ../../home/common.nix
       ];
       home.stateVersion = "23.11";
     });
