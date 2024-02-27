@@ -4,11 +4,34 @@
 
 ## Getting started
 
+>[!TODO]
+> We are still writing this, but for now, see: https://nixos.asia/en/nixos-tutorial
+
+### Deploying `vanjaram`
+
+Currently, we are managing a single NixOS machine called `vanjaram`. It does not use disko (see section below) yet. This is how we update its configuration:
+
+```
+# SSH to vanjaram (via tailscale)
+ssh {srid|remotedev}@vanjaram
+> cd /etc/nixos
+# ^ This points to this git repository
+> sudo nixos-rebuild switch
+```
+
+Make sure to push your changes to Git. Later, we want to figure out remote deployment here.
+
+### OLD disko instructions
+
+>[!NOTE] 
+> These are not being in effect, yet.
+
 Terminology:
 
 - **Host**: The machine you are installing NixOS on.
   - It must already be running Linux (which could even be booted off a rescue image)
 - **Guest**: Your current machine, from which you are remotely doing the install.
+
 
 | Step | Host | Guest |
 | ---- | ------ | ---- |

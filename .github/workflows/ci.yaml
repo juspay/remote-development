@@ -24,4 +24,4 @@ jobs:
       - run: nixci
       # Run disko VM test (test partition creation and whether the VM boots up later)
       # TODO: Do this for every configuration?
-      - run: nix build .#nixosConfigurations.nixos-remote-01.config.system.build.installTest
+      # - run: nix build .#nixosConfigurations.vanjaram.config.system.build.installTest
