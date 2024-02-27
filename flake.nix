@@ -26,7 +26,9 @@
     };
     nixosConfigurations = {
       # TODO: Make this use disko
-      vanjaram = nixpkgs.lib.nixosSystem ./hosts/vanjaram/configuration.nix;
+      vanjaram = nixpkgs.lib.nixosSystem {
+        modules = [ ./hosts/vanjaram/configuration.nix ];
+      };
     };
   };
 }
