@@ -34,4 +34,7 @@
   security.sudo.wheelNeedsPassword = false;
   services.tailscale.enable = true;
   services.openssh.enable = true;
+
+  # For VSCode SSH remote
+  services.vscode-server.enable = true;
 }
