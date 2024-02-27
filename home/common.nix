@@ -1,6 +1,13 @@
 # home-manager configuration common to all users
 { flake, pkgs, ... }:
 {
+  imports = [
+    "${flake.inputs.vscode-server}/modules/vscode-server/home.nix"
+  ];
+
+  # For VSCode ssh remote
+  services.vscode-server.enable = true;
+
   # Everyone uses git. But they can customize it further in their per-user
   # config.
   programs.git = {
