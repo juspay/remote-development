@@ -1,7 +1,11 @@
 # Configuration common to all hosts
-{ pkgs, lib, ... }:
+{ flake, pkgs, lib, ... }:
 
 {
+  imports = [
+    flake.nixosModules.home-manager
+  ];
+
   # Some machines may not have ethernet.
   networking.networkmanager.enable = true;
 
