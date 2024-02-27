@@ -47,4 +47,9 @@
     enable = true;
     nix-direnv.enable = true;
   };
+
+  # Enable bash, so the dotfiles are in use.
+  programs.bash = {
+    enable = true;
+  };
 }
