@@ -59,4 +59,7 @@
   programs.bash = {
     enable = true;
   };
+
+  # Useful programs
+  programs.htop.enable = true;
 }
