@@ -9,7 +9,7 @@
 
 ### Deploying `vanjaram`
 
-Currently, we are managing a single NixOS machine called `vanjaram`. It does not use disk (see section below) yet. This is how we update its configuration:
+Currently, we are managing a single NixOS machine called `vanjaram`. It does not use disko (see section below) yet. This is how we update its configuration:
 
 ```
 # SSH to vanjaram (via tailscale)
