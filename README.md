@@ -21,6 +21,10 @@ ssh {srid|remotedev}@vanjaram
 
 Make sure to push your changes to Git. Later, we want to figure out remote deployment here.
 
+### New User instructions
+
+1. Enable VSCode server by [enabling the user service](https://github.com/nix-community/nixos-vscode-server?tab=readme-ov-file#enable-the-service)
+
 ## Discussion
 
 For discussing this project, please [join our Zulip](https://nixos.zulipchat.com/#narrow/stream/413948-nixos).
