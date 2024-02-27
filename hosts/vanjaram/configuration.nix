@@ -46,9 +46,9 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = 
     let 
-      cfg = import ../../nix/users.nix;
+      users = import ../../nix/users.nix;
     in 
-      lib.flip lib.mapAttrs cfg (name: cfg {
+      lib.flip lib.mapAttrs users (name: cfg: {
         isNormalUser = true;
         extraGroups = [ "networkmanager" "wheel" ];
         openssh.authorizedKeys.keys = cfg.pubKeys;
