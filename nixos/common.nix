@@ -3,7 +3,7 @@
 
 {
   imports = [
-    flake.nixosModules.home-manager
+    flake.inputs.self.nixosModules.home-manager
   ];
 
   # Some machines may not have ethernet.

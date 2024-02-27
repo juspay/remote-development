@@ -1,5 +1,8 @@
 { pkgs, lib, ... }:
 
+let
+  users = import ../../nix/users.nix;
+in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -14,19 +17,20 @@
   networking.hostName = "vanjaram";
 
   users.users =
-    let
-      users = import ../../nix/users.nix;
-    in
     lib.flip lib.mapAttrs users (name: cfg: {
       isNormalUser = true;
       extraGroups = [ "networkmanager" "wheel" ];
       openssh.authorizedKeys.keys = cfg.pubKeys;
     });
 
-  environment.systemPackages = with pkgs; [
-    neovim
-    git
-  ];
+  home-manager.users =
+    lib.flip lib.mapAttrs users (name: cfg: {
+      imports = [
+        ../../home/commmon.nix
+      ];
+      home.stateVersion = "23.11";
+    });
+
 
   system.stateVersion = "23.11";
 }
