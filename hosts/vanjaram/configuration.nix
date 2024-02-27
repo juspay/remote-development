@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 let
-  users = import ../../nix/users.nix;
+  users = import ../../users { inherit lib; };
 in
 {
   imports = [
@@ -27,6 +27,7 @@ in
     lib.flip lib.mapAttrs users (name: cfg: {
       imports = [
         ../../home/common.nix
+        cfg.homeModule
       ];
       home.stateVersion = "23.11";
     });
