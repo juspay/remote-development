@@ -4,16 +4,16 @@
 
 ## Getting started
 
->[!TODO]
+>[!todo] 
 > We are still writing this, but for now, see: https://nixos.asia/en/nixos-tutorial
 
 ### Deploying `vanjaram`
 
-Currently, we are managing a single NixOS machine called `vanjaram`. It does not use disko (see section below) yet. This is how we update its configuration:
+Currently, we are managing a single NixOS machine called `vanjaram`. It does not use disko. This is how we update its configuration:
 
 ```
 # SSH to vanjaram (via tailscale)
-ssh {srid|remotedev}@vanjaram
+ssh srid@vanjaram
 > cd /etc/nixos
 # ^ This points to this git repository
 > nix run
