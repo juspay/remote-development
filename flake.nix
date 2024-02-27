@@ -21,7 +21,7 @@
       # Deploy
       default = {
         type = "app";
-        program = nixpkgs.lib.getExe deploy-rs;
+        program = nixpkgs.lib.getExe deploy-rs.packages.x86_64-linux.deploy-rs;
       };
     };
     nixosConfigurations = {
