@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports =
@@ -44,22 +44,15 @@
   services.openssh.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.remotedev = {
-    isNormalUser = true;
-    description = "remote-dev";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-      #  thunderbird
-    ];
-    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOZaSBdDB7D4ceQgghss2xrI7MEwFyN2tRMkgkUTBOg8" ];
-  };
-  users.users.srid = {
-    isNormalUser = true;
-    description = "srid";
-    extraGroups = [ "networkmanager" "wheel" ];
-    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQRxPoqlThDrkR58pKnJgmeWPY9/wleReRbZ2MOZRyd" ];
-  };
+  users.users = 
+    let 
+      cfg = import ../../nix/users.nix;
+    in 
+      lib.flip lib.mapAttrs cfg (name: cfg {
+        isNormalUser = true;
+        extraGroups = [ "networkmanager" "wheel" ];
+        openssh.authorizedKeys.keys = cfg.pubKeys;
+      });
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
