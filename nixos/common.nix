@@ -38,4 +38,6 @@
   security.sudo.wheelNeedsPassword = false;
   services.tailscale.enable = true;
   services.openssh.enable = true;
+
+  programs.nix-ld.enable = true;
 }
