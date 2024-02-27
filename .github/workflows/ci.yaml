@@ -8,13 +8,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@main
-        # disko VM test requires a system with support for: {kvm, nixos-test}
-        # See https://github.com/nix-community/nixos-generators/issues/83#issuecomment-973294478
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
         with:
-          extra-conf: "system-features = nixos-test benchmark big-parallel kvm"
+          extra-conf: |
+            trusted-public-keys = cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+            substituters = https://cache.garnix.io?priority=41 https://cache.nixos.org/
       - uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: yaxitech/nix-install-pkgs-action@v3
+        with:
+          packages: "github:srid/nixci"
+      - run: nixci
       # Run disko VM test (test partition creation and whether the VM boots up later)
+      # TODO: Do this for every configuration?
       - run: nix build .#nixosConfigurations.nixos-remote-01.config.system.build.installTest
