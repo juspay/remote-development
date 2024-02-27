@@ -117,7 +117,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.hostSystem = "x86_64-linux";
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
