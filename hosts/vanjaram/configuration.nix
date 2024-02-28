@@ -2,6 +2,7 @@
 
 let
   users = import ../../users { inherit lib; };
+  admins = [ "srid" "shivaraj" ];
 in
 {
   imports = [
@@ -19,7 +20,9 @@ in
   users.users =
     lib.flip lib.mapAttrs users (name: cfg: {
       isNormalUser = true;
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups =
+        lib.optionals (lib.elem name admins)
+          [ "networkmanager" "wheel" ];
       openssh.authorizedKeys.keys = cfg.pubKeys;
     });
 
