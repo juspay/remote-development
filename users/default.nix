@@ -6,6 +6,9 @@ let
   users = {
     srid = import ./srid.nix;
     shivaraj = import ./shivaraj.nix;
+
+    "aditya.garg" = import ./aditya.garg.nix;
+    "rohit.singh" = import ./rohit.singh.nix;
   };
 in
 users
