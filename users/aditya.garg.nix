@@ -13,7 +13,6 @@
         gs = "git status";
         gb = "git branch";
       };
-
     };
   };
 }

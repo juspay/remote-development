@@ -22,6 +22,10 @@ ssh srid@vanjaram
 
 Make sure to push your changes to Git. Later, we want to figure out remote deployment here.
 
+## Adding users
+
+1. If your Juspay email address is `myname@juspay.in`, add yourself to `users/myname.nix`. See `users/srid.nix` for example. Then open a PR.
+
 ## Discussion
 
 For discussing this project, please [join our Zulip](https://nixos.zulipchat.com/#narrow/stream/413948-nixos).
