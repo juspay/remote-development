@@ -23,6 +23,7 @@
       lg = "lazygit";
     };
 
+    programs.bat.enable = true;
     programs.lazygit = {
       enable = true;
     };
