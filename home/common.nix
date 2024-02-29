@@ -3,6 +3,7 @@
 {
   imports = [
     "${flake.inputs.vscode-server}/modules/vscode-server/home.nix"
+    flake.inputs.nix-index-database.hmModules.nix-index
   ];
 
   # For VSCode ssh remote
@@ -58,6 +59,14 @@
   # Enable bash, so the dotfiles are in use.
   programs.bash = {
     enable = true;
+  };
+
+  # command-not-found handler to suggest nix way of installing stuff.
+  # FIXME: This ought to show new nix cli commands though:
+  # https://github.com/nix-community/nix-index/issues/191
+  programs.nix-index = {
+    enable = true;
+    enableBashIntegration = true;
   };
 
   # Useful programs
