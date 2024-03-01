@@ -26,6 +26,8 @@ in
       openssh.authorizedKeys.keys = cfg.pubKeys;
     });
 
+  nix.settings.trusted-users = [ "root" ] ++ lib.attrNames users;
+
   home-manager.users =
     lib.flip lib.mapAttrs users (name: cfg: {
       imports = [
