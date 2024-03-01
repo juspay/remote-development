@@ -18,6 +18,7 @@
   home.packages = with pkgs; [
     # FIXME: neovim should be per-user
     neovim
+    nixci
   ];
 
   # Recommended Nix settings

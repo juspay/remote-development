@@ -32,6 +32,13 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
+  # Extra packages
+  nixpkgs.overlays = [
+    (self: super: {
+      nixci = flake.inputs.nixci.packages.${pkgs.system}.default;
+    })
+  ];
+
   # Remote access
   # - SSH through tailscale
   # - Allow passwordless sudo for all in 'wheel'
