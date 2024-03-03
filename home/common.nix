@@ -19,6 +19,16 @@
     # FIXME: neovim should be per-user
     neovim
     nixci
+
+    # TODO: This should be installed only for admins
+    (pkgs.writeShellApplication {
+      name = "zellij-admin";
+      runtimeInputs = [ pkgs.zellij ];
+      text = ''
+        set -xe
+        zellij attach -c admin
+      '';
+    })
   ];
 
   # Recommended Nix settings
