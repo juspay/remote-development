@@ -9,7 +9,8 @@
   outputs = { self, nixpkgs, disko, deploy-rs, ... }: {
     deploy.nodes = {
       nixos-remote-01 = {
-        hostname = "100.92.110.74"; # Tailscale IP belongs to separate Tailscale account with gmail login shared between Faisal & Shivaraj
+        # local network IP
+        hostname = "10.10.69.221";
         sshUser = "root";
         profiles.system = {
           user = "root";

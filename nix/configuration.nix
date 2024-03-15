@@ -13,14 +13,22 @@ in
     root = {
       openssh.authorizedKeys.keys = [
         users.shivaraj.pubKey
-        users.faisal.pubKey
+        users.srid.pubKey
       ];
     };
-    faisal = {
+    srid = {
       openssh.authorizedKeys.keys = [
-        users.faisal.pubKey
+        users.srid.pubKey
       ];
       isNormalUser = true;
+      extraGroups = [ "wheel" ];
+    };
+    shivaraj = {
+      openssh.authorizedKeys.keys = [
+        users.shivaraj.pubKey
+      ];
+      isNormalUser = true;
+      extraGroups = [ "wheel" ];
     };
   };
   boot.loader.grub = {
