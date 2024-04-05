@@ -4,6 +4,8 @@
   ];
 
   homeModule = { pkgs, lib, ... }: {
+    home.packages = with pkgs; [ sshuttle python3 fd fzf ];
+
     programs.git = {
       userName = "Sridhar Ratnakumar";
       userEmail = "srid@srid.ca";
