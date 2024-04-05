@@ -9,6 +9,7 @@ let
 
     "aditya.garg" = import ./aditya.garg.nix;
     "rohit.singh" = import ./rohit.singh.nix;
+    "pratyaydeep.ghanta" = import ./pratyaydeep.ghanta.nix;
   };
 in
 users
