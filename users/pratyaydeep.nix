@@ -5,7 +5,7 @@
 
   homeModule = { pkgs, lib, ... }: {
     programs.git = {
-      userName = "Pratyaydeep";
+      userName = "pratyaydeep";
       userEmail = "pratyaydeep.ghanta@juspay.in";
 
     };
