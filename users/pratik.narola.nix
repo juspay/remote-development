@@ -9,7 +9,7 @@
       userEmail = "pratik.narola@juspay.in";
       aliases = {
         gco = "git checkout";
-        gst = "git status"
+        gst = "git status";
         gc = "git commit";
         gpsup = "git push --set-upstream origin";
         gb = "git branch";
