@@ -11,6 +11,7 @@ let
     "rohit.singh" = import ./rohit.singh.nix;
     "pratyaydeep.ghanta" = import ./pratyaydeep.ghanta.nix;
     "mohammad.faisal" = import ./mohammad.faisal.nix;
+    "pratik.narola" = import ./pratik.narola.nix;
   };
 in
 users
