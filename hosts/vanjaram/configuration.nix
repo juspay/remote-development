@@ -10,6 +10,7 @@ in
     ./hardware-configuration.nix
     # Shared modules
     ../../nixos/common.nix
+    ../../nixos/xrdp.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
