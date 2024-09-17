@@ -4,7 +4,7 @@
 
 ## Getting started
 
->[!todo] 
+>[!todo]
 > We are still writing this, but for now, see: https://nixos.asia/en/nixos-tutorial
 
 ### Deploying `vanjaram`
@@ -20,7 +20,7 @@ ssh srid@vanjaram
 # ^ This runs 'nixos-rebuild switch' (via nixos-flake)
 ```
 
-Make sure to push your changes to Git. Later, we want to figure out remote deployment here.
+Make sure to push your changes to Git. Later, we want to figure out remote deployment here (as with `github:juspay/nixos-buffet`).
 
 ## Adding users
 

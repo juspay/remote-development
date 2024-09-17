@@ -18,7 +18,7 @@
   home.packages = with pkgs; [
     # FIXME: neovim should be per-user
     neovim
-    nixci
+    omnix
 
     # TODO: This should be installed only for admins
     (pkgs.writeShellApplication {

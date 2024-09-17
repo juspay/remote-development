@@ -35,7 +35,7 @@
   # Extra packages
   nixpkgs.overlays = [
     (self: super: {
-      nixci = flake.inputs.nixci.packages.${pkgs.system}.default;
+      omnix = flake.inputs.omnix.packages.${pkgs.system}.default;
     })
   ];
 
