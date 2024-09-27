@@ -9,7 +9,7 @@
 
 ### Deploying `vanjaram`
 
-Currently, we are managing a single NixOS machine called `vanjaram`. It does not use disko. This is how we update its configuration:
+Currently, we are managing a single NixOS machine called `vanjaram` (IP address `10.10.71.148`). It does not use disko. This is how we update its configuration:
 
 ```
 # SSH to vanjaram (via tailscale)
