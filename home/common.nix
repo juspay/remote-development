@@ -19,6 +19,9 @@
     # FIXME: neovim should be per-user
     neovim
     omnix
+    ripgrep
+    fzf
+    jq
 
     # TODO: This should be installed only for admins
     (pkgs.writeShellApplication {
