@@ -54,4 +54,6 @@
   # vscode-server workaround:
   # https://github.com/nix-community/nixos-vscode-server/issues/67#issuecomment-1763115054
   programs.nix-ld.enable = true;
+
+  systemd.services.NetworkManager-wait-online.enable = false;
 }
